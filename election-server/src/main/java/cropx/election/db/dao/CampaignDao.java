@@ -14,7 +14,7 @@ import cropx.election.db.entity.Campaign;
 public class CampaignDao {
 
 	private static final RowMapper<Campaign> CAMPAIGN_MAPPER = (rs, rowNum) -> {
-		Campaign campaign = new Campaign(rs.getLong("id"));
+		Campaign campaign = new Campaign(rs.getInt("id"));
 		return campaign;
 	};
 

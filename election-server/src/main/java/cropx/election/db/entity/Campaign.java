@@ -10,7 +10,7 @@ public class Campaign {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private int id;
 
 	@Column(nullable = false)
 	private String name;
@@ -26,15 +26,15 @@ public class Campaign {
 	public Campaign() {
 	}
 
-	public Campaign(long id) {
+	public Campaign(int id) {
 		this.id = id;
 	}
 
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -60,5 +60,10 @@ public class Campaign {
 
 	public void setFinish(Date finish) {
 		this.finish = finish;
+	}
+	public boolean isOpen()
+	{
+		Date currentDate = new Date();
+		return finish.after(currentDate) && start.before(currentDate);
 	}
 }

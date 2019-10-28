@@ -10,13 +10,13 @@ import cropx.election.db.entity.Campaign;
 import cropx.election.db.repository.CampaignRepository;
 
 @RestController
-@RequestMapping(value = "/election", consumes = "application/json", produces = "application/json")
+@RequestMapping(value = "/election", produces = "application/json")
 public class ElectionController {
 
 	@Autowired
 	private CampaignRepository campaignRepository;
 
-	@RequestMapping(value = "/campaign", method = RequestMethod.GET)
+	@GetMapping(value = "/campaign",produces = "application/json")
 	public @ResponseBody ResponseEntity<Optional<Campaign>> getCampaigns() {
 		return ResponseEntity.ok(campaignRepository.findAll().stream().findAny());
 	}
